@@ -1,28 +1,20 @@
-/ {
-    chosen {
-        zmk,kscan = &kscan0;
-    };
+kscan0: kscan_0 {
+    compatible = "zmk,kscan-gpio-matrix";
+    label = "KSCAN";
+    diode-direction = "row2col"; // 다이오드 방향이 Row -> Col 일 때
 
-    kscan0: kscan_0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
-        diode-direction = "row2col"; // 보통 다이오드가 열에서 행 방향으로 연결됨
+    row-gpios
+        = <&xiao_d 7 GPIO_ACTIVE_LOW>
+        , <&xiao_d 8 GPIO_ACTIVE_LOW>
+        , <&xiao_d 9 GPIO_ACTIVE_LOW>
+        , <&xiao_d 10 GPIO_ACTIVE_LOW>
+        ;
 
-        // 행(Row) 설정: 도면의 7, 8, 9, 10번 라인
-        row-gpios
-            = <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
-
-        // 열(Column) 설정: 도면의 6, 5, 4, 3, 2번 라인
-        col-gpios
-            = <&xiao_d 6 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 4 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 3 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 2 GPIO_ACTIVE_HIGH>
-            ;
-    };
+    col-gpios
+        = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        ;
 };
