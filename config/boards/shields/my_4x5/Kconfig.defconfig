@@ -1,0 +1,6 @@
+if SHIELD_MY_4X5
+
+config ZMK_KEYBOARD_NAME
+    default "My 4x5 Pad"
+
+endif
