@@ -6,7 +6,7 @@
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-        diode-direction = "col2row"; // 보통 다이오드가 열에서 행 방향으로 연결됨
+        diode-direction = "row2col"; // 보통 다이오드가 열에서 행 방향으로 연결됨
 
         // 행(Row) 설정: 도면의 7, 8, 9, 10번 라인
         row-gpios
