@@ -11,14 +11,21 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
+
         default_layer {
             bindings = <
-                &kp N7 &kp N8 &kp N9 &kp F1 &kp F2
-                &kp N4 &kp N5 &kp N6 &kp F3 &kp F4
-                &kp N1 &kp N2 &kp N3 &kp F5 &kp F6
-                &kp N0 &kp DOT &kp ENTER &kp F7 &kp F8
+&kp GRAVE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp LEFT_SHIFT  &kp Q  &kp W  &kp E  &kp R  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp N0  &kp DOT  &kp ENTER  &kp C  &kp SPACE
             >;
         };
     };

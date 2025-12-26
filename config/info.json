@@ -1,13 +1,31 @@
 {
-    "name": "my_4x5",
-    "layouts": {
-        "default": {
-            "layout": [
-                {"label":"R0C0", "x":0, "y":0}, {"label":"R0C1", "x":1, "y":0}, {"label":"R0C2", "x":2, "y":0}, {"label":"R0C3", "x":3, "y":0}, {"label":"R0C4", "x":4, "y":0},
-                {"label":"R1C0", "x":0, "y":1}, {"label":"R1C1", "x":1, "y":1}, {"label":"R1C2", "x":2, "y":1}, {"label":"R1C3", "x":3, "y":1}, {"label":"R1C4", "x":4, "y":1},
-                {"label":"R2C0", "x":0, "y":2}, {"label":"R2C1", "x":1, "y":2}, {"label":"R2C2", "x":2, "y":2}, {"label":"R2C3", "x":3, "y":2}, {"label":"R2C4", "x":4, "y":2},
-                {"label":"R3C0", "x":0, "y":3}, {"label":"R3C1", "x":1, "y":3}, {"label":"R3C2", "x":2, "y":3}, {"label":"R3C3", "x":3, "y":3}, {"label":"R3C4", "x":4, "y":3}
-            ]
-        }
+  "id": "my_4x5",
+  "name": "my_4x5",
+  "layouts": {
+    "default": {
+      "layout": [
+        { "label": "R0C0", "x": 0, "y": 0 },
+        { "label": "R0C1", "x": 1, "y": 0 },
+        { "label": "R0C2", "x": 2, "y": 0 },
+        { "label": "R0C3", "x": 3, "y": 0 },
+        { "label": "R0C4", "x": 4, "y": 0 },
+        { "label": "R1C0", "x": 0, "y": 1 },
+        { "label": "R1C1", "x": 1, "y": 1 },
+        { "label": "R1C2", "x": 2, "y": 1 },
+        { "label": "R1C3", "x": 3, "y": 1 },
+        { "label": "R1C4", "x": 4, "y": 1 },
+        { "label": "R2C0", "x": 0, "y": 2 },
+        { "label": "R2C1", "x": 1, "y": 2 },
+        { "label": "R2C2", "x": 2, "y": 2 },
+        { "label": "R2C3", "x": 3, "y": 2 },
+        { "label": "R2C4", "x": 4, "y": 2 },
+        { "label": "R3C0", "x": 0, "y": 3 },
+        { "label": "R3C1", "x": 1, "y": 3 },
+        { "label": "R3C2", "x": 2, "y": 3 },
+        { "label": "R3C3", "x": 3, "y": 3 },
+        { "label": "R3C4", "x": 4, "y": 3 }
+      ]
     }
+  },
+  "sensors": []
 }
