@@ -19,7 +19,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // 위에서 정의한 matrix_transform 순서(RC)에 맞춰 20개를 배치합니다.
+            // 4x5 매트릭스이므로 반드시 20개의 키 정의가 필요합니다.
             bindings = <
                 &kp N7    &kp N8    &kp N9    &kp F1    &kp F2
                 &kp N4    &kp N5    &kp N6    &kp F3    &kp F4
