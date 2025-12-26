@@ -6,7 +6,7 @@
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-        diode-direction = "row2col"; 
+        diode-direction = "col2row"; 
 
         // 행(Row): 출력 (Active Low 설정)
         row-gpios
