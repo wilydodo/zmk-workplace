@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/* * 키맵 에디터가 보드와 쉴드를 인식하게 하는 코드입니다.
+ * @keymap-editor-metadata 
+ * {
+ * "board": "seeeduino_xiao_rp2040",
+ * "shield": "my_4x5"
+ * }
+ */
+
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
