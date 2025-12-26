@@ -1,20 +1,28 @@
-kscan0: kscan_0 {
-    compatible = "zmk,kscan-gpio-matrix";
-    label = "KSCAN";
-    diode-direction = "row2col"; // 다이오드 방향이 Row -> Col 일 때
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
 
-    row-gpios
-        = <&xiao_d 7 GPIO_ACTIVE_LOW>
-        , <&xiao_d 8 GPIO_ACTIVE_LOW>
-        , <&xiao_d 9 GPIO_ACTIVE_LOW>
-        , <&xiao_d 10 GPIO_ACTIVE_LOW>
-        ;
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "row2col"; 
 
-    col-gpios
-        = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        ;
+        // 행(Row): 출력 (Active Low 설정)
+        row-gpios
+            = <&xiao_d 7 GPIO_ACTIVE_LOW>
+            , <&xiao_d 8 GPIO_ACTIVE_LOW>
+            , <&xiao_d 9 GPIO_ACTIVE_LOW>
+            , <&xiao_d 10 GPIO_ACTIVE_LOW>
+            ;
+
+        // 열(Column): 입력 (내부 풀업 저항 활성화)
+        col-gpios
+            = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
+    };
 };
