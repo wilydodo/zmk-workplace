@@ -22,7 +22,7 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         /* 양면 기판에서 인식이 안 될 경우 아래를 row2col로 바꿉니다 */
-        diode-direction = "row2col"; 
+        diode-direction = "col2row"; 
 
         row-gpios
             = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
