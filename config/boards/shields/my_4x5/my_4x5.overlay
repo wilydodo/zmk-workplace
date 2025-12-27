@@ -6,7 +6,7 @@
         zmk,matrix_transform = &default_transform;
     };
 
-    /* 행렬 변환 설정 */
+    /* 키 매트릭스 변환 설정 */
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <5>;
@@ -19,7 +19,7 @@
         >;
     };
 
-    /* 키 행렬 스캔 설정 */
+    /* 키 스캔 설정 (Row/Col 핀) */
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
@@ -41,19 +41,25 @@
             ;
     };
 
-    /* 로터리 엔코더 정의 (D0, D1) */
+    /* 노브(엔코더) 하드웨어 정의 */
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
         a-gpios = <&xiao_d 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         b-gpios = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         steps = <80>;
+        status = "okay";
     };
 
-    /* 센서 활성화 */
+    /* 센서 레이어 활성화 */
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
         triggers-per-rotation = <20>;
     };
+};
+
+/* 보드 수준에서 엔코더 상태 강제 활성화 */
+&left_encoder {
+    status = "okay";
 };
