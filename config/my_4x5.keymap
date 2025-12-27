@@ -30,8 +30,8 @@
 &kp N0     &kp DOT &kp RET &kp C   &kp SPACE
             >;
 
-            /* 엔코더 회전 시 볼륨 조절 */
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            /* 노브를 돌릴 때 왼쪽(LEFT), 오른쪽(RIGHT) 화살표 동작 */
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
         };
     };
 };
