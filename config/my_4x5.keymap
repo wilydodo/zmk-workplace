@@ -1,12 +1,3 @@
-/*
- * @keymap-editor-metadata 
- * {
- * "board": "seeeduino_xiao_rp2040",
- * "shield": "my_4x5",
- * "layout": "default"
- * }
- */
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
@@ -30,7 +21,7 @@
 &kp N0     &kp DOT &kp RET &kp C   &kp SPACE
             >;
 
-            /* 노브를 돌릴 때 왼쪽(LEFT), 오른쪽(RIGHT) 화살표 동작 */
+            /* 엔코더 회전: 왼쪽/오른쪽 화살표 */
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
         };
     };
