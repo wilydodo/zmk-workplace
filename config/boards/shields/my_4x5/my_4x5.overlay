@@ -23,7 +23,7 @@
         label = "KSCAN";
         diode-direction = "col2row"; 
 
-        /* Row 핀 (현재 유지): 6, 5, 4, 3 */
+        /* Row 핀 양쪽 뒤집기: 6, 5, 4, 3 */
         row-gpios
             = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -31,13 +31,13 @@
             , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
 
-        /* Col 핀 (가로 뒤집기): 7, 8, 9, 10, 2 */
+        /* Col 핀 양쪽 뒤집기: 2, 10, 9, 8, 7 */
         col-gpios
-            = <&xiao_d 7 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 8 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 9 GPIO_ACTIVE_HIGH>
+            = <&xiao_d 2 GPIO_ACTIVE_HIGH>
             , <&xiao_d 10 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 0 GPIO_ACTIVE_HIGH>
+            , <&~xiao_d 9 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 8 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 7 GPIO_ACTIVE_HIGH>
             ;
     };
 };
