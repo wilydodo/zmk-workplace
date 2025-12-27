@@ -10,6 +10,9 @@
         compatible = "zmk,matrix-transform";
         columns = <5>;
         rows = <4>;
+        /* RC(row, column) 매크로는 위에서 include한 헤더 파일에 정의되어 있습니다.
+           각 행(row)은 0~3, 각 열(col)은 0~4까지 총 20개입니다.
+        */
         map = <
             RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)
             RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)
@@ -23,21 +26,19 @@
         label = "KSCAN";
         diode-direction = "col2row"; 
 
-        /* Row 핀 뒤집기 (양면 대응): D3~D6 -> D6, D5, D4, D3 */
         row-gpios
-            = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
 
-        /* Col 핀 뒤집기 및 유지: D7~D10 반전(10,9,8,7) + D2 유지 */
         col-gpios
-            = <&xiao_d 10 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 9  GPIO_ACTIVE_HIGH>
-            , <&xiao_d 8  GPIO_ACTIVE_HIGH>
-            , <&xiao_d 7  GPIO_ACTIVE_HIGH>
-            , <&xiao_d 2  GPIO_ACTIVE_HIGH>
+            = <&xiao_d 6 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 5 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 4 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 3 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 2 GPIO_ACTIVE_HIGH>
             ;
     };
 };
