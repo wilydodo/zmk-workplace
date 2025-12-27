@@ -13,7 +13,6 @@
 / {
     combos {
         compatible = "zmk,combos";
-
         esc {
             bindings = <&kp ESCAPE>;
             key-positions = <0 1>;
@@ -25,8 +24,14 @@
 
         default_layer {
             bindings = <
-&kp GRAVE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp LEFT_SHIFT  &kp Q  &kp W  &kp E  &kp R  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp N0  &kp DOT  &kp ENTER  &kp C  &kp SPACE
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  
+&kp LSHFT  &kp Q   &kp W   &kp E   &kp R  
+&kp LCTRL  &kp A   &kp S   &kp D   &kp F  
+&kp N0     &kp DOT &kp RET &kp C   &kp SPACE
             >;
+
+            /* 엔코더 회전 시 볼륨 조절 */
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
