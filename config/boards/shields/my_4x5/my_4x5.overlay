@@ -34,11 +34,11 @@
 
         /* 첫 줄(Grave 줄) 입력 안됨: D7 핀 연결 확인 필요 */
         col-gpios
-            = <&xiao_d 7 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 8 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 9 GPIO_ACTIVE_HIGH>
+            = <&xiao_d 0 GPIO_ACTIVE_HIGH>
             , <&xiao_d 10 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 2 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 9 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 8 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 7 GPIO_ACTIVE_HIGH>
             ;
     };
 };
