@@ -7,19 +7,23 @@
         zmk,physical-layout = &physical_layout0;
     };
 
+    /* 1. 에러가 났던 key_physical_attrs를 대신할 노드를 직접 정의합니다. */
+    key_attrs: key_physical_attrs {
+        compatible = "zmk,physical-layout-key";
+    };
+
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>;
         kscan = <&kscan0>;
 
-        /* 괄호 <> 안에서 각 phandle 세트 사이에는 공백을, 
-           줄이 바뀔 때는 콤마(,)를 정확히 찍어주어야 합니다. */
+        /* 2. 위에서 정의한 &key_attrs를 사용하여 좌표를 지정합니다. */
         keys
-            = <&key_physical_attrs 0 0>, <&key_physical_attrs 0 100>, <&key_physical_attrs 0 200>, <&key_physical_attrs 0 300>, <&key_physical_attrs 0 400>
-            , <&key_physical_attrs 100 0>, <&key_physical_attrs 100 100>, <&key_physical_attrs 100 200>, <&key_physical_attrs 100 300>, <&key_physical_attrs 100 400>
-            , <&key_physical_attrs 200 0>, <&key_physical_attrs 200 100>, <&key_physical_attrs 200 200>, <&key_physical_attrs 200 300>, <&key_physical_attrs 200 400>
-            , <&key_physical_attrs 300 0>, <&key_physical_attrs 300 100>, <&key_physical_attrs 300 200>, <&key_physical_attrs 300 300>, <&key_physical_attrs 300 400>
+            = <&key_attrs 0 0>, <&key_attrs 0 100>, <&key_attrs 0 200>, <&key_attrs 0 300>, <&key_attrs 0 400>
+            , <&key_attrs 100 0>, <&key_attrs 100 100>, <&key_attrs 100 200>, <&key_attrs 100 300>, <&key_attrs 100 400>
+            , <&key_attrs 200 0>, <&key_attrs 200 100>, <&key_attrs 200 200>, <&key_attrs 200 300>, <&key_attrs 200 400>
+            , <&key_attrs 300 0>, <&key_attrs 300 100>, <&key_attrs 300 200>, <&key_attrs 300 300>, <&key_attrs 300 400>
             ;
     };
 
