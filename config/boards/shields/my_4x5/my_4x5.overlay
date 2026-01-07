@@ -7,25 +7,25 @@
         zmk,physical-layout = &physical_layout0;
     };
 
-    /* 1. 노드 정의 시 매개변수 개수(#key-cells)를 명시합니다. */
-    key_physical_attrs: key_physical_attrs {
-        compatible = "zmk,physical-layout-key";
-        #key-cells = <2>; // y, x 좌표 두 개를 받는다는 뜻입니다.
-    };
-
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>;
         kscan = <&kscan0>;
 
-        /* 2. 이제 &key_physical_attrs가 2개의 숫자를 안전하게 받아들입니다. */
+        /* 별도의 외부 노드 정의 없이 직접 속성을 부여합니다. */
         keys
-            = <&key_physical_attrs 0 0>, <&key_physical_attrs 0 100>, <&key_physical_attrs 0 200>, <&key_physical_attrs 0 300>, <&key_physical_attrs 0 400>
-            , <&key_physical_attrs 100 0>, <&key_physical_attrs 100 100>, <&key_physical_attrs 100 200>, <&key_physical_attrs 100 300>, <&key_physical_attrs 100 400>
-            , <&key_physical_attrs 200 0>, <&key_physical_attrs 200 100>, <&key_physical_attrs 200 200>, <&key_physical_attrs 200 300>, <&key_physical_attrs 200 400>
-            , <&key_physical_attrs 300 0>, <&key_physical_attrs 300 100>, <&key_physical_attrs 300 200>, <&key_physical_attrs 300 300>, <&key_physical_attrs 300 400>
+            = <&key_phys_attrs 0 0>, <&key_phys_attrs 0 100>, <&key_phys_attrs 0 200>, <&key_phys_attrs 0 300>, <&key_phys_attrs 0 400>
+            , <&key_phys_attrs 100 0>, <&key_phys_attrs 100 100>, <&key_phys_attrs 100 200>, <&key_phys_attrs 100 300>, <&key_phys_attrs 100 400>
+            , <&key_phys_attrs 200 0>, <&key_phys_attrs 200 100>, <&key_phys_attrs 200 200>, <&key_phys_attrs 200 300>, <&key_phys_attrs 200 400>
+            , <&key_phys_attrs 300 0>, <&key_phys_attrs 300 100>, <&key_phys_attrs 300 200>, <&key_phys_attrs 300 300>, <&key_phys_attrs 300 400>
             ;
+    };
+
+    /* 시스템이 '이게 뭐지?'라고 묻지 않도록 표준 레이블을 정의합니다. */
+    key_phys_attrs: key_phys_attrs {
+        compatible = "zmk,physical-layout-key";
+        #key-cells = <2>;
     };
 
     default_transform: matrix_transform {
