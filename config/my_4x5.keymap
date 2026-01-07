@@ -2,9 +2,21 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    /* --- ZMK Studio 실시간 수정을 위한 필수 설정 --- */
+    chosen {
+        zmk,physical-layout = &physical_layout0;
+    };
+
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        kscan = <&kscan0>;
+        transform = <&default_transform>;
+    };
+    /* ------------------------------------------- */
+
     combos {
         compatible = "zmk,combos";
-
         esc {
             bindings = <&kp ESCAPE>;
             key-positions = <0 1>;
@@ -15,12 +27,15 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            // 총 20개의 키 (4x5 매트릭스)
             bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp LSHFT  &kp Q  &kp UP_ARROW  &kp E  &kp R  &kp LCTRL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp F  &kp N0  &kp DOT  &kp RET  &kp C  &kp SPACE
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4
+&kp LSHFT  &kp Q   &kp UP  &kp E   &kp R
+&kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT &kp F
+&kp N0     &kp DOT &kp RET &kp C   &kp SPACE
             >;
 
-            /* 엔코더 회전: 왼쪽/오른쪽 화살표 */
-
+            /* 노브 회전: 왼쪽/오른쪽 화살표 */
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
         };
     };
