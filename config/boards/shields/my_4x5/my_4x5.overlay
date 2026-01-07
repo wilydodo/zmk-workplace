@@ -4,33 +4,6 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
-        //zmk,physical-layout = &physical_layout0;
-    };
-
-    physical_layout0: physical_layout_0 {
-        compatible = "zmk,physical-layout";
-        display-name = "Default Layout";
-        transform = <&default_transform>;
-        kscan = <&kscan0>;
-
-        /* 'lacks binding' 에러를 해결하기 위해, 별도의 참조 노드 없이 
-           좌표 값을 직접 나열하는 배열 방식을 사용하거나, 
-           아래와 같이 표준 레이블을 엄격하게 준수해야 합니다.
-        */
-        keys
-            = <&key_0 0 0>,   <&key_0 100 0>,   <&key_0 200 0>,   <&key_0 300 0>,   <&key_0 400 0>
-            , <&key_0 0 100>, <&key_0 100 100>, <&key_0 200 100>, <&key_0 300 100>, <&key_0 400 100>
-            , <&key_0 0 200>, <&key_0 100 200>, <&key_0 200 200>, <&key_0 300 200>, <&key_0 400 200>
-            , <&key_0 0 300>, <&key_0 100 300>, <&key_0 200 300>, <&key_0 300 300>, <&key_0 400 300>
-            ;
-    };
-
-    /* 노드 이름을 시스템 예약어와 겹치지 않게 'key_0'로 단순화하고, 
-       반드시 루트(/) 경로 바로 아래에 정의하세요. 
-    */
-    key_0: key_0 {
-        compatible = "zmk,physical-layout-key";
-        #key-cells = <2>;
     };
 
     default_transform: matrix_transform {
