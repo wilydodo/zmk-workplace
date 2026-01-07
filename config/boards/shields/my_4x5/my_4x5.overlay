@@ -7,52 +7,49 @@
         zmk,physical-layout = &physical_layout0;
     };
 
-    /* 1️⃣ 각 키를 독립 노드로 정의 + #key-cells 추가 */
-    keys {
-        compatible = "zmk,physical-layout-keys";
-
-        /* #key-cells = <0>이 있어야 'lacks #key-cells' 에러가 해결됩니다. */
-        k00: key_0 { x = <0>;   y = <0>;   width = <100>; height = <100>; #key-cells = <0>; };
-        k01: key_1 { x = <100>; y = <0>;   width = <100>; height = <100>; #key-cells = <0>; };
-        k02: key_2 { x = <200>; y = <0>;   width = <100>; height = <100>; #key-cells = <0>; };
-        k03: key_3 { x = <300>; y = <0>;   width = <100>; height = <100>; #key-cells = <0>; };
-        k04: key_4 { x = <400>; y = <0>;   width = <100>; height = <100>; #key-cells = <0>; };
-
-        k10: key_5 { x = <0>;   y = <100>; width = <100>; height = <100>; #key-cells = <0>; };
-        k11: key_6 { x = <100>; y = <100>; width = <100>; height = <100>; #key-cells = <0>; };
-        k12: key_7 { x = <200>; y = <100>; width = <100>; height = <100>; #key-cells = <0>; };
-        k13: key_8 { x = <300>; y = <100>; width = <100>; height = <100>; #key-cells = <0>; };
-        k14: key_9 { x = <400>; y = <100>; width = <100>; height = <100>; #key-cells = <0>; };
-
-        k20: key_10 { x = <0>;   y = <200>; width = <100>; height = <100>; #key-cells = <0>; };
-        k21: key_11 { x = <100>; y = <200>; width = <100>; height = <100>; #key-cells = <0>; };
-        k22: key_12 { x = <200>; y = <200>; width = <100>; height = <100>; #key-cells = <0>; };
-        k23: key_13 { x = <300>; y = <200>; width = <100>; height = <100>; #key-cells = <0>; };
-        k24: key_14 { x = <400>; y = <200>; width = <100>; height = <100>; #key-cells = <0>; };
-
-        k30: key_15 { x = <0>;   y = <300>; width = <100>; height = <100>; #key-cells = <0>; };
-        k31: key_16 { x = <100>; y = <300>; width = <100>; height = <100>; #key-cells = <0>; };
-        k32: key_17 { x = <200>; y = <300>; width = <100>; height = <100>; #key-cells = <0>; };
-        k33: key_18 { x = <300>; y = <300>; width = <100>; height = <100>; #key-cells = <0>; };
-        k34: key_19 { x = <400>; y = <300>; width = <100>; height = <100>; #key-cells = <0>; };
-    };
-
-    /* 2️⃣ physical-layout 설정 */
+    /* 1️⃣ Studio가 인식할 수 있는 독립 키 노드 레이아웃 */
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
-        display-name = "My 4x5 Macro";
-        kscan = <&kscan0>;
+        display-name = "Default Layout";
         transform = <&default_transform>;
+        kscan = <&kscan0>;
 
-        keys = <
-            &k00 &k01 &k02 &k03 &k04
-            &k10 &k11 &k12 &k13 &k14
-            &k20 &k21 &k22 &k23 &k24
-            &k30 &k31 &k32 &k33 &k34
-        >;
+        /* 2️⃣ lacks binding 에러를 피하기 위해 내부 예약 노드인 
+           zmk,physical-layout-key 바인딩을 직접 사용합니다. */
+        keys
+            = <&key00>, <&key01>, <&key02>, <&key03>, <&key04>
+            , <&key10>, <&key11>, <&key12>, <&key13>, <&key14>
+            , <&key20>, <&key21>, <&key22>, <&key23>, <&key24>
+            , <&key30>, <&key31>, <&key32>, <&key33>, <&key34>
+            ;
     };
 
-    /* 3️⃣ 매트릭스 변환 */
+    /* 각 키 노드 정의: compatible을 'zmk,physical-layout-key'로 맞춰야 합니다. */
+    key00: key_00 { compatible = "zmk,physical-layout-key"; x = <0>;   y = <0>;   width = <100>; height = <100>; };
+    key01: key_01 { compatible = "zmk,physical-layout-key"; x = <100>; y = <0>;   width = <100>; height = <100>; };
+    key02: key_02 { compatible = "zmk,physical-layout-key"; x = <200>; y = <0>;   width = <100>; height = <100>; };
+    key03: key_03 { compatible = "zmk,physical-layout-key"; x = <300>; y = <0>;   width = <100>; height = <100>; };
+    key04: key_04 { compatible = "zmk,physical-layout-key"; x = <400>; y = <0>;   width = <100>; height = <100>; };
+
+    key10: key_10 { compatible = "zmk,physical-layout-key"; x = <0>;   y = <100>; width = <100>; height = <100>; };
+    key11: key_11 { compatible = "zmk,physical-layout-key"; x = <100>; y = <100>; width = <100>; height = <100>; };
+    key12: key_12 { compatible = "zmk,physical-layout-key"; x = <200>; y = <100>; width = <100>; height = <100>; };
+    key13: key_13 { compatible = "zmk,physical-layout-key"; x = <300>; y = <100>; width = <100>; height = <100>; };
+    key14: key_14 { compatible = "zmk,physical-layout-key"; x = <400>; y = <100>; width = <100>; height = <100>; };
+
+    key20: key_20 { compatible = "zmk,physical-layout-key"; x = <0>;   y = <200>; width = <100>; height = <100>; };
+    key21: key_21 { compatible = "zmk,physical-layout-key"; x = <100>; y = <200>; width = <100>; height = <100>; };
+    key22: key_22 { compatible = "zmk,physical-layout-key"; x = <200>; y = <200>; width = <100>; height = <100>; };
+    key23: key_23 { compatible = "zmk,physical-layout-key"; x = <300>; y = <200>; width = <100>; height = <100>; };
+    key24: key_24 { compatible = "zmk,physical-layout-key"; x = <400>; y = <200>; width = <100>; height = <100>; };
+
+    key30: key_30 { compatible = "zmk,physical-layout-key"; x = <0>;   y = <300>; width = <100>; height = <100>; };
+    key31: key_31 { compatible = "zmk,physical-layout-key"; x = <100>; y = <300>; width = <100>; height = <100>; };
+    key32: key_32 { compatible = "zmk,physical-layout-key"; x = <200>; y = <300>; width = <100>; height = <100>; };
+    key33: key_33 { compatible = "zmk,physical-layout-key"; x = <300>; y = <300>; width = <100>; height = <100>; };
+    key34: key_34 { compatible = "zmk,physical-layout-key"; x = <400>; y = <300>; width = <100>; height = <100>; };
+
+    /* 이하 matrix-transform, kscan, encoder 등은 이전과 동일 */
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <5>;
@@ -65,18 +62,15 @@
         >;
     };
 
-    /* 4️⃣ KSCAN 설정 */
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
-
         row-gpios
             = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
-
         col-gpios
             = <&gpio0 1 GPIO_ACTIVE_HIGH>
             , <&gpio0 2 GPIO_ACTIVE_HIGH>
@@ -86,7 +80,6 @@
             ;
     };
 
-    /* 5️⃣ 엔코더 설정 (핀 중복 방지: 6, 7번 사용) */
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         a-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
