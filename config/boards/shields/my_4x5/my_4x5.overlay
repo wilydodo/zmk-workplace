@@ -13,16 +13,14 @@ physical_layout0: physical_layout_0 {
     kscan = <&kscan0>;
     transform = <&default_transform>;
 
-    keys {
-        compatible = "zmk,key-positions";
-        key-positions = <
-            0   0    0   100  0   200  0   300  0   400
-            100 0    100 100  100 200  100 300  100 400
-            200 0    200 100  200 200  200 300  200 400
-            300 0    300 100  300 200  300 300  300 400
-        >;
-    };
+    keys = <
+        0   0    0   100  0   200  0   300  0   400
+        100 0    100 100  100 200  100 300  100 400
+        200 0    200 100  200 200  200 300  200 400
+        300 0    300 100  300 200  300 300  300 400
+    >;
 };
+
 
 
     default_transform: matrix_transform {
