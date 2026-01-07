@@ -13,14 +13,17 @@
         transform = <&default_transform>;
         kscan = <&kscan0>;
 
-        /* 별도의 외부 노드 정의 없이 직접 속성을 부여합니다. */
-        keys
-            = <&key_phys_attrs 0 0>, <&key_phys_attrs 0 100>, <&key_phys_attrs 0 200>, <&key_phys_attrs 0 300>, <&key_phys_attrs 0 400>
-            , <&key_phys_attrs 100 0>, <&key_phys_attrs 100 100>, <&key_phys_attrs 100 200>, <&key_phys_attrs 100 300>, <&key_phys_attrs 100 400>
-            , <&key_phys_attrs 200 0>, <&key_phys_attrs 200 100>, <&key_phys_attrs 200 200>, <&key_phys_attrs 200 300>, <&key_phys_attrs 200 400>
-            , <&key_phys_attrs 300 0>, <&key_phys_attrs 300 100>, <&key_phys_attrs 300 200>, <&key_phys_attrs 300 300>, <&key_phys_attrs 300 400>
-            ;
+        keys {
+            compatible = "zmk,key-positions";
+            key-positions = <
+                0   0    0   100  0   200  0   300  0   400
+                100 0    100 100  100 200  100 300  100 400
+                200 0    200 100  200 200  200 300  200 400
+                300 0    300 100  300 200  300 300  300 400
+            >;
+        };
     };
+
 
     /* 시스템이 '이게 뭐지?'라고 묻지 않도록 표준 레이블을 정의합니다. */
     key_phys_attrs: key_phys_attrs {
