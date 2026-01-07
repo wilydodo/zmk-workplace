@@ -1,78 +1,35 @@
-#include <dt-bindings/zmk/matrix_transform.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 
 / {
-    chosen {
-        zmk,kscan = &kscan0;
-        zmk,matrix-transform = &default_transform;
-        /* Studio 빌드 에러가 계속된다면, 아래 라인을 주석 처리하여 우선 일반 빌드를 성공시킬 수 있습니다. */
-        zmk,physical-layout = &physical_layout0;
-    };
+    keymap {
+        compatible = "zmk,keymap";
 
-    /* 1️⃣ Studio용 레이아웃 정의 (노드 이름을 단순화하고 위치를 조정했습니다) */
-    physical_layout0: physical_layout_0 {
-        compatible = "zmk,physical-layout";
-        display-name = "Default Layout";
-        transform = <&default_transform>;
-        kscan = <&kscan0>;
+        /* 기본 레이어 (Layer 0) */
+        default_layer {
+            // 엔코더 회전 시 동작 (시계방향, 반시계방향)
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 
-        /* 2️⃣ lacks binding 에러를 피하기 위해 phandle 매개변수 방식을 제거하고 단순 나열합니다. */
-        keys
-            = <&key_phys_attrs 0 0>,   <&key_phys_attrs 100 0>,   <&key_phys_attrs 200 0>,   <&key_phys_attrs 300 0>,   <&key_phys_attrs 400 0>
-            , <&key_phys_attrs 0 100>, <&key_phys_attrs 100 100>, <&key_phys_attrs 200 100>, <&key_phys_attrs 300 100>, <&key_phys_attrs 400 100>
-            , <&key_phys_attrs 0 200>, <&key_phys_attrs 100 200>, <&key_phys_attrs 200 200>, <&key_phys_attrs 300 200>, <&key_phys_attrs 400 200>
-            , <&key_phys_attrs 0 300>, <&key_phys_attrs 100 300>, <&key_phys_attrs 200 300>, <&key_phys_attrs 300 300>, <&key_phys_attrs 400 300>
-            ;
-    };
+            // 4x5 매트릭스 키 할당 (5개씩 4줄 = 20개)
+            bindings = <
+                &kp ESC   &kp Q     &kp W     &kp E     &kp R
+                &kp TAB   &kp A     &kp S     &kp D     &kp F
+                &kp LSHFT &kp Z     &kp X     &kp C     &kp V
+                &kp LCTRL &kp LALT  &kp SPACE &mo 1     &kp ENTER
+            >;
+        };
 
-    /* 3️⃣ 시스템이 이 노드를 '장치'가 아닌 '속성 그룹'으로 인식하게 하여 바인딩 에러를 피합니다. */
-    key_phys_attrs: key_phys_attrs {
-        compatible = "zmk,physical-layout-key";
-        #key-cells = <2>;
-    };
+        /* 보조 레이어 (Layer 1) - 'mo 1' 키를 누른 동안 활성화 */
+        lower_layer {
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
 
-    default_transform: matrix_transform {
-        compatible = "zmk,matrix-transform";
-        columns = <5>;
-        rows = <4>;
-        map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)
-            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)
-            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)
-            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4)
-        >;
-    };
-
-    kscan0: kscan_0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
-
-        row-gpios
-            = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
-
-        col-gpios
-            = <&gpio0 1 GPIO_ACTIVE_HIGH>
-            , <&gpio0 2 GPIO_ACTIVE_HIGH>
-            , <&gpio0 4 GPIO_ACTIVE_HIGH>
-            , <&gpio0 3 GPIO_ACTIVE_HIGH>
-            , <&gpio0 0 GPIO_ACTIVE_HIGH>
-            ;
-    };
-
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        steps = <48>;
-        status = "okay";
-    };
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>;
-        triggers-per-rotation = <24>;
+            bindings = <
+                &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
+                &none        &none        &none        &none        &none
+                &none        &none        &none        &none        &none
+                &bootloader  &none        &none        &trans       &none
+            >;
+        };
     };
 };
