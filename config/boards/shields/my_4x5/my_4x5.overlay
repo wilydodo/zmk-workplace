@@ -1,10 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
-/* Studio 헤더 에러를 피하기 위해 매크로를 직접 정의합니다 */
-#if !defined(key_physical_attrs)
-#define key_physical_attrs(row, col) (row << 16 | col)
-#endif
-
 / {
     chosen {
         zmk,kscan = &kscan0;
@@ -18,12 +13,12 @@
         transform = <&default_transform>;
         kscan = <&kscan0>;
 
-        /* 좌표 정보를 매크로 함수 형태로 직접 전달 */
+        /* ZMK 표준 포맷: &key_physical_attrs 뒤에 y좌표 x좌표를 각각 적어줍니다 */
         keys
-            = <key_physical_attrs(0, 0)>   , <key_physical_attrs(0, 100)> , <key_physical_attrs(0, 200)> , <key_physical_attrs(0, 300)> , <key_physical_attrs(0, 400)>
-            , <key_physical_attrs(100, 0)> , <key_physical_attrs(100, 100)>, <key_physical_attrs(100, 200)>, <key_physical_attrs(100, 300)>, <key_physical_attrs(100, 400)>
-            , <key_physical_attrs(200, 0)> , <key_physical_attrs(200, 100)>, <key_physical_attrs(200, 200)>, <key_physical_attrs(200, 300)>, <key_physical_attrs(200, 400)>
-            , <key_physical_attrs(300, 0)> , <key_physical_attrs(300, 100)>, <key_physical_attrs(300, 200)>, <key_physical_attrs(300, 300)>, <key_physical_attrs(300, 400)>
+            = <&key_physical_attrs 0 0>   <&key_physical_attrs 0 100> <&key_physical_attrs 0 200> <&key_physical_attrs 0 300> <&key_physical_attrs 0 400>
+            , <&key_physical_attrs 100 0> <&key_physical_attrs 100 100> <&key_physical_attrs 100 200> <&key_physical_attrs 100 300> <&key_physical_attrs 100 400>
+            , <&key_physical_attrs 200 0> <&key_physical_attrs 200 100> <&key_physical_attrs 200 200> <&key_physical_attrs 200 300> <&key_physical_attrs 200 400>
+            , <&key_physical_attrs 300 0> <&key_physical_attrs 300 100> <&key_physical_attrs 300 200> <&key_physical_attrs 300 300> <&key_physical_attrs 300 400>
             ;
     };
 
@@ -43,7 +38,6 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        /* Xiao RP2040의 실제 GPIO 번호로 매핑 (필요시 확인) */
         row-gpios
             = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
