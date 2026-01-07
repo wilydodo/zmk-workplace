@@ -18,5 +18,5 @@
 #     artifact-name: corne_left_with_studio
 #
 include:
-  - board: seeed_xiao_rp2040
+  - board: xiao_rp2040
     shield: my_4x5
