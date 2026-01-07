@@ -2,19 +2,26 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // 노브 설정: 시계방향(볼륨 UP), 반시계방향(볼륨 DOWN)
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-
             bindings = <
-                &kp Q  &kp W  &kp E  &kp R  &kp T
-                &kp A  &kp S  &kp D  &kp F  &kp G
-                &kp Z  &kp X  &kp C  &kp V  &kp B
-                &kp N0 &kp N1 &kp N2 &kp LGUI &kp ENTER
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp LSHFT  &kp Q  &kp UP_ARROW  &kp E  &kp R  &kp LCTRL  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp F  &kp N0  &kp DOT  &kp RET  &kp C  &kp SPACE
             >;
+
+            /* 엔코더 회전: 왼쪽/오른쪽 화살표 */
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
         };
     };
 };
