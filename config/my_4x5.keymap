@@ -2,24 +2,30 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    // 1. 레이아웃 정의 (노드 이름은 자유롭지만 내용은 정확히)
-    ph_layout: ph_layout {
+    /* 1. Chosen 블록을 반드시 가장 먼저 선언 */
+    chosen {
+        zmk,physical-layout = &physical_layout0;
+    };
+
+    /* 2. Physical Layout 정의 */
+    physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>;
         kscan = <&kscan0>;
     };
 
-    // 2. Chosen 설정
-    chosen {
-        zmk,physical-layout = &ph_layout;
+    /* 3. 나머지는 동일 */
+    combos {
+        compatible = "zmk,combos";
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
-        // 3. Studio를 위해 keymap 노드 내부에 레이아웃 정보를 한 번 더 명시
-        display-name = "Default Layout";
-
         default_layer {
             bindings = <
 &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4
@@ -27,7 +33,6 @@
 &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT &kp F
 &kp N0     &kp DOT &kp RET &kp C   &kp SPACE
             >;
-
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
         };
     };
