@@ -13,12 +13,13 @@
         transform = <&default_transform>;
         kscan = <&kscan0>;
 
-        /* ZMK 표준 포맷: &key_physical_attrs 뒤에 y좌표 x좌표를 각각 적어줍니다 */
+        /* 괄호 <> 안에서 각 phandle 세트 사이에는 공백을, 
+           줄이 바뀔 때는 콤마(,)를 정확히 찍어주어야 합니다. */
         keys
-            = <&key_physical_attrs 0 0>   <&key_physical_attrs 0 100> <&key_physical_attrs 0 200> <&key_physical_attrs 0 300> <&key_physical_attrs 0 400>
-            , <&key_physical_attrs 100 0> <&key_physical_attrs 100 100> <&key_physical_attrs 100 200> <&key_physical_attrs 100 300> <&key_physical_attrs 100 400>
-            , <&key_physical_attrs 200 0> <&key_physical_attrs 200 100> <&key_physical_attrs 200 200> <&key_physical_attrs 200 300> <&key_physical_attrs 200 400>
-            , <&key_physical_attrs 300 0> <&key_physical_attrs 300 100> <&key_physical_attrs 300 200> <&key_physical_attrs 300 300> <&key_physical_attrs 300 400>
+            = <&key_physical_attrs 0 0>, <&key_physical_attrs 0 100>, <&key_physical_attrs 0 200>, <&key_physical_attrs 0 300>, <&key_physical_attrs 0 400>
+            , <&key_physical_attrs 100 0>, <&key_physical_attrs 100 100>, <&key_physical_attrs 100 200>, <&key_physical_attrs 100 300>, <&key_physical_attrs 100 400>
+            , <&key_physical_attrs 200 0>, <&key_physical_attrs 200 100>, <&key_physical_attrs 200 200>, <&key_physical_attrs 200 300>, <&key_physical_attrs 200 400>
+            , <&key_physical_attrs 300 0>, <&key_physical_attrs 300 100>, <&key_physical_attrs 300 200>, <&key_physical_attrs 300 300>, <&key_physical_attrs 300 400>
             ;
     };
 
