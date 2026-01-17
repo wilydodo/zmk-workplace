@@ -1,0 +1,15 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &kp N1    &kp N2  // D3-정방향, D4-정방향
+                &kp N3    &kp N4  // D3-역방향, D4-역방향
+            >;
+        };
+    };
+};
