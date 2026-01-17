@@ -8,10 +8,6 @@
         compatible = "zmk,matrix-transform";
         rows = <2>;
         columns = <2>;
-        /* 회로도에 따라 매핑: 
-           D3-순방향, D4-순방향 -> Row 0
-           D3-역방향, D4-역방향 -> Row 1
-        */
         map = <
             RC(0,0) RC(0,1)
             RC(1,0) RC(1,1)
@@ -20,18 +16,17 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
         diode-direction = "col2row";
 
-        /* D2 핀 하나를 공유하지만, 듀플렉스 인식을 위해 논리적으로 구분 */
+        /* Pro Micro 핀 번호 기반 (D2, D3, D4 순서) */
         row-gpios
-            = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D2 (순방향 그룹용)
-            , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D2 (역방향 그룹용)
+            = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
 
         col-gpios
-            = <&pro_micro 3 GPIO_ACTIVE_HIGH> // D3
-            , <&pro_micro 4 GPIO_ACTIVE_HIGH> // D4
+            = <&pro_micro 3 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
             ;
     };
 };
